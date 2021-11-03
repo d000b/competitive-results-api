@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-const csgo = [];
+const csgo = {};
 
 exports.csgoResults = (req, res) => {
     console.log("Inside csgoResults")
@@ -13,24 +13,23 @@ exports.csgoResults = (req, res) => {
             $(".allres", html).each(function() {
                 $('.results-sublist', this).each(function() {                
                     const headline = $(".standard-headline", this).text();
-                    // console.log(headline.text());
+                    csgo[headline] = [];
+                    
                     $(".result", this).each(function() {
                         const teamWon = $(".team-won", this).text();
                         const teamLost = $(".team:not(.team-won)", this).text();
                         const scoreWon = $(".score-won", this).text();
                         const scoreLost = $(".score-lost", this).text();
-                        const eventName = $(".event-name", this).text();
-    
-                        // console.log(`${teamWon.text()} ${scoreWon.text()} - ${scoreLost.text()} ${teamLost
-                        // .text()} ------ ${eventName.text()}`);
-                        csgo.push({
+                        const eventName = $(".event-name", this).text();    
+                        
+                        csgo[headline].push({
                             headline,
                             teamWon,
                             teamLost,
                             scoreWon,
                             scoreLost,
                             eventName
-                        });
+                        })
                     })
                 })
             })
