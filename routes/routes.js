@@ -11,6 +11,8 @@ module.exports = app => {
 
     router.get("/vava", controller.vavaResults);
 
+    router.get("/overW", controller.overWResults);
+
     app.use("/", router);
 
 }
