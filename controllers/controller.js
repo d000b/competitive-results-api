@@ -95,7 +95,7 @@ exports.vavaResults = (req, res) => {
                 cards.push(cardList);
             })
             
-            for(let i = 0; i<2; i++) {
+            for(let i = 0; i<labels.length; i++) {
                 vava[labels[i]] = [];
                 
                 cards[i].forEach(element => {                
