@@ -9,6 +9,8 @@ module.exports = app => {
 
     router.get("/csgo", controller.csgoResults);
 
+    router.get("/vava", controller.vavaResults);
+
     app.use("/", router);
 
 }
