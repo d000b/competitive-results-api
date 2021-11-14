@@ -7,6 +7,6 @@ app.use(express.json());
 require("./routes/routes")(app);
 
 app.listen(PORT, () => {
-    console.log("Listen at port 8080");
+    console.log(`Listening at port ${PORT}`);
 })
 

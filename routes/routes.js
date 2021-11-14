@@ -2,16 +2,20 @@ module.exports = app => {
     const router = require("express").Router();
     const controller = require("../controllers/controller");
     
-    router.get("/", (req, res) => {
-        console.log("Padrao")
-        res.send({message: "opa"});
+    router.get("/", (req, res) => {        
+        res.send({
+            message: "There are one route to each game:",
+            CSGO: "/csgo",
+            Valorant: "/vava",
+            Overwatch: "/overW"
+        });
     })
 
     router.get("/csgo", controller.csgoResults);
 
     router.get("/vava", controller.vavaResults);
 
-    router.get("/overW", controller.overWResults);
+    router.get("/overw", controller.overwResults);
 
     app.use("/", router);
 

@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 
 const csgo = {};
 const vava = {};
-const overW = {};
+const overw = {};
 
 exports.csgoResults = (req, res) => {
     console.log("Inside csgoResults")
@@ -106,8 +106,8 @@ exports.vavaResults = (req, res) => {
         }).catch(err => console.log);
 }
 
-exports.overWResults = (req, res) => {
-    console.log("Inside overWResults");
+exports.overwResults = (req, res) => {
+    console.log("Inside overwResults");
     axios.get("https://www.over.gg/matches/results")
         .then((response) => {
             const html = response.data;
@@ -163,12 +163,12 @@ exports.overWResults = (req, res) => {
             })
             
             for(let i = 0; i<labels.length; i++) {
-                overW[labels[i]] = [];
+                overw[labels[i]] = [];
                 
                 cards[i].forEach(element => {                
-                    overW[labels[i]].push(element);
+                    overw[labels[i]].push(element);
                 });
             }
-            res.json(overW);
+            res.json(overw);
         }).catch(err => console.log);
 }
