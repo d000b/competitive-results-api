@@ -21,11 +21,11 @@ node index.js
 - Data is acquired through scraping different sites, been them the main news site of each game, thus the quantity of data can change between the games.
 
 ## CS:GO: `/csgo`
-![](images/csgo.png)
+![](images/csgo.PNG)
 
 ## Valorant: `/vava`
-![](images/vava.png)
+![](images/vava.PNG)
 
 ## Overwatch: `/overw`
-![](images/overw.png)
+![](images/overw.PNG)
 
