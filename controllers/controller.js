@@ -7,6 +7,7 @@ const overw = {};
 
 exports.csgoResults = (req, res) => {
     console.log("Inside csgoResults")
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8081');
     axios.get("https://www.hltv.org/results")
         .then((response) => {
             const html = response.data;
@@ -41,6 +42,7 @@ exports.csgoResults = (req, res) => {
 
 exports.vavaResults = (req, res) => {
     console.log("Inside vavaResults");
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8081');
     axios.get("https://www.vlr.gg/matches/results")
         .then((response) => {
             const html = response.data;
@@ -108,6 +110,7 @@ exports.vavaResults = (req, res) => {
 
 exports.overwResults = (req, res) => {
     console.log("Inside overwResults");
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8081');
     axios.get("https://www.over.gg/matches/results")
         .then((response) => {
             const html = response.data;

@@ -4,7 +4,7 @@ module.exports = app => {
     
     router.get("/", (req, res) => {        
         res.send({
-            message: "There are one route to each game:",
+            message: "There is one route for each game:",
             CSGO: "/csgo",
             Valorant: "/vava",
             Overwatch: "/overW"
