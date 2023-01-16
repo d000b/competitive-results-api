@@ -9,4 +9,3 @@ require("./routes/routes")(app);
 app.listen(PORT, () => {
     console.log(`Listening at port ${PORT}`);
 })
-
