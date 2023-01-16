@@ -2,8 +2,9 @@ version: '2'
 
 services:
   web_rest:
-    image: news_parser
-    container_name: js_news_parser
+    image: ${ENV_IMAGE_NAME}:${ENV_IMAGE_VERSION}
+    restart: unless-stopped
+    container_name: ${ENV_CONTAINER_NAME}
     build:
       context:  .
       dockerfile: Dockerfile
