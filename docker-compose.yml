@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  web_rest:
+    image: news_parser
+    container_name: js_news_parser
+    build:
+      context:  .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
