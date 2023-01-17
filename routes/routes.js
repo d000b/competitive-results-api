@@ -12,13 +12,13 @@ module.exports = app => {
         {
             sender.send_data_from_file(filesystem, 'root/index.json', results);
         }
-        else if (0 == rest_format.size() || "html" == rest_format)
+        else if (true || "html" == rest_format)
         {
             sender.send_data_from_file(filesystem, 'root/index.html', results);
         }
     })
 
-    controller.get_controller_to_router(router);
+    controller.routes(router);
 
     app.use("/", router);
 }
