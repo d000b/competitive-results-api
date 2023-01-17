@@ -1,3 +1,5 @@
+const cheerio = require("cheerio");
+
 
 function replacer(data)
 {
@@ -5,8 +7,10 @@ function replacer(data)
 }
 
 
-export function hltv_parser(html, data)
+function hltv_parser(response, data)
 {
+    const html = response.data;
+    const $ = cheerio.load(html);
     $(".allres", html).each(function() {
         $(".results-sublist", this).each(function() {                
             const headline = $(".standard-headline", this).text();
@@ -34,12 +38,12 @@ export function hltv_parser(html, data)
 }
 
 
-export function www_game_gg_parser(html, data)
+function www_game_gg_parser(response, data)
 {
     const labels = [];
     const cards = [];
-    const data = {};
-
+    const html = response.data;
+    const $ = cheerio.load(html);
     $(".wf-label", html).each(function() {            
         const date = replacer(this.children[0].data);
         labels.push(date);
@@ -89,7 +93,7 @@ export function www_game_gg_parser(html, data)
     })
     
     i = 0;
-    for (label in labels)
+    for (const label in labels)
     {
         data[label] = [];
         
@@ -100,3 +104,7 @@ export function www_game_gg_parser(html, data)
         ++i;
     }
 }
+
+
+module.exports.html_htlv_tournament_parser = hltv_parser;
+module.exports.html_www_game_gg_tournament_parser = www_game_gg_parser;
