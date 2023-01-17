@@ -1,0 +1,6 @@
+{
+    "message": "There is one route for each game:",
+    "CSGO": "/csgo",
+    "Valorant": "/valorant",
+    "Overwatch": "/overwatch"
+}

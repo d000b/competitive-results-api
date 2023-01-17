@@ -2,13 +2,6 @@ module.exports = app => {
     const router = require("express").Router();
     const controller = require("../controllers/controller");
     
-    const json_message = {
-        message: "There is one route for each game:",
-        CSGO: "/csgo",
-        Valorant: "/vava",
-        Overwatch: "/overW"
-    };
-
     router.get("/", (request, results) => {
         rest_format = request.query.fmt;
         
