@@ -3,12 +3,12 @@ const ctx = require("./context");
 const functional = require("./functional");
 
 
-exports.vavaResults = (requests, results) => {
-    valorant = ctx.ControllerContext(
+exports.valorant = (requests, results) => {
+    valorant = new ctx.controller(
         "https://www.vlr.gg/matches/results",
-        functional.www_game_gg_parser,
+        functional.html_www_game_gg_tournament_parser,
         "Run parse valorant"
     );
 
-    return valorant.get_result();
+    valorant.get_result(requests, results);
 }

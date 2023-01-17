@@ -3,12 +3,13 @@ const ctx = require("./context");
 const functional = require("./functional");
 
 
-exports.overwResults = (requests, results) => {
-    overwatch = ctx.ControllerContext(
+exports.overwatch = (requests, results) => {
+    overwatch = new ctx.controller(
         "https://www.over.gg/matches/results",
-        functional.www_game_gg_parser,
+        functional.html_www_game_gg_tournament_parser,
         "Run parse overwatch"
     );
-
-    return overwatch.get_result();
+    console.log(results);
+    overwatch.get_result(requests, results);
+    console.log(results);
 }

@@ -3,12 +3,12 @@ const ctx = require("./context");
 const functional = require("./functional");
 
 
-exports.csgoResults = (requests, results) => {
-    csgo = ctx.ControllerContext(
+exports.csgo = (requests, results) => {
+    csgo = new ctx.controller(
         "https://www.hltv.org/results",
-        functional.hltv_parser,
+        functional.html_htlv_tournament_parser,
         "Run parse csgo"
     );
 
-    return csgo.get_result();
+    csgo.get_result(requests, results);
 }
