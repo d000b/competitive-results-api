@@ -72,4 +72,4 @@ function hltv_match_details_parser(html, data)
     })
 }
 
-module.exports.html_htlv_detail_parser = hltv_match_details_parser;
+module.exports.html_htlv_details_parser = hltv_match_details_parser;

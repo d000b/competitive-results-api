@@ -9,6 +9,7 @@ function hltv_result_matches_parser(html, data)
     var get_result_tables = function(This, timeline)
     {
         tables = [];
+
         $(".result", This).each(function() {
             const teamWon = $(".team-won", this).text();
             const teamLost = $(".team:not(.team-won)", this).text();
@@ -28,12 +29,15 @@ function hltv_result_matches_parser(html, data)
         return tables;
     }
 
+    const csgo = [];
     $(".allres", html).each(function() {
         $(".results-sublist", this).each(function() {                
-            const timeline = $(".standard-headline", this).text();
-            data[timeline] = get_result_tables(this, timeline);
+            const headline = $(".standard-headline", this).text();
+            csgo[headline] = get_result_tables(this, headline);
         })
     })
+
+    data = csgo;
 }
 
 module.exports.html_htlv_tournament_parser = hltv_result_matches_parser;
