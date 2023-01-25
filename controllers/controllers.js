@@ -1,16 +1,16 @@
 
-const csgo_tournament_results = require('./csgo').csgo;
-const valorant_tournament_results = require('./valorant').valorant;
-const overwatch_tournament_results = require('./overwatch').overwatch;
+const get_home_controller_to_router = require('./home').routes;
+const get_game_controller_to_router = require('./game').routes;
+const get_testes_controller_to_router = require('./testes/controllers').routes;
 
 
 function get_controller_to_router(router)
 {
-    router.get("/csgo", csgo_tournament_results);
+    get_home_controller_to_router(router);
 
-    router.get("/valorant", valorant_tournament_results);
+    get_game_controller_to_router(router);
 
-    router.get("/overwatch", overwatch_tournament_results);
+    get_testes_controller_to_router(router);
 }
 
 module.exports.routes = get_controller_to_router;
