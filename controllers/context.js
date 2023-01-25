@@ -22,7 +22,7 @@ class  ControllerContext
         axios
             .get(this.uri)
             .then((response) => { 
-                this.parser(response, data); 
+                this.parser(response.html, data); 
                 results.json(data);
             })
             .catch(err => console.log);
