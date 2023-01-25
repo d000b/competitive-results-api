@@ -22,11 +22,11 @@ class  ControllerContext
         axios
             .get(this.uri)
             .then((response) => { 
-                this.parser(response.html, data); 
+                this.parser(response.data, data);
                 results.json(data);
             })
             .catch(err => console.log);
     }
 }
 
-exports.controller = ControllerContext;
+module.exports.controller = ControllerContext;
