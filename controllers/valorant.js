@@ -1,6 +1,6 @@
 
 const ctx = require("./context");
-const functional = require("./functional");
+const functional = require("./game_gg/tournament");
 
 
 exports.valorant = (requests, results) => {

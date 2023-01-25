@@ -1,6 +1,6 @@
 
 const ctx = require("./context");
-const functional = require("./functional");
+const functional = require("./game_gg/tournament");
 
 
 exports.overwatch = (requests, results) => {
@@ -9,7 +9,6 @@ exports.overwatch = (requests, results) => {
         functional.html_www_game_gg_tournament_parser,
         "Run parse overwatch"
     );
-    console.log(results);
+    
     overwatch.get_result(requests, results);
-    console.log(results);
 }
