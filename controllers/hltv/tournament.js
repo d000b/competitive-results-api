@@ -32,7 +32,9 @@ function  hltv_result_matches_parser(html)
 
     const hltv = { };
     $(".allres", html).each(function() {
-        $(".results-sublist", this).each(function() {
+        // TODO, FIX, BUG: @d000b
+        // When getting all items with the class '.results-sublist' one (first) item is missing and all tables are shifted by dates.
+        $(".results-sublist", this).each(function() { 
             const headline = $(".standard-headline", this).text();
             hltv[headline] = get_hltv_result_tables(this, headline);
         })
