@@ -2,42 +2,43 @@
 const cheerio = require("cheerio");
 
 
-function hltv_result_matches_parser(html, data)
+function  hltv_result_matches_parser(html)
 {
     const $ = cheerio.load(html);
 
-    var get_result_tables = function(This, timeline)
+    var get_hltv_result_tables = function(This, timeline)
     {
-        tables = [];
-
-        $(".result", This).each(function() {
+        let tables = [];
+        $(".result-con", This).each(function() {
+            const link = $(".a-reset", this).attr('href');
+            const event = $(".event-name", this).text();
             const teamWon = $(".team-won", this).text();
             const teamLost = $(".team:not(.team-won)", this).text();
             const scoreWon = $(".score-won", this).text();
             const scoreLost = $(".score-lost", this).text();
-            const eventName = $(".event-name", this).text();    
             
             tables.push({
                 "date": timeline,
+                event,
+                link,
                 teamWon,
                 teamLost,
                 scoreWon,
-                scoreLost,
-                eventName
+                scoreLost
             });
         })
         return tables;
     }
 
-    const csgo = [];
+    const hltv = { };
     $(".allres", html).each(function() {
-        $(".results-sublist", this).each(function() {                
+        $(".results-sublist", this).each(function() {
             const headline = $(".standard-headline", this).text();
-            csgo[headline] = get_result_tables(this, headline);
+            hltv[headline] = get_hltv_result_tables(this, headline);
         })
     })
 
-    data = csgo;
+    return hltv;
 }
 
 module.exports.html_htlv_tournament_parser = hltv_result_matches_parser;
