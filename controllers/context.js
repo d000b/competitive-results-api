@@ -16,16 +16,14 @@ class  ControllerContext
         const host_ = 'http://localhost:8081';
         const header_ = 'Access-Control-Allow-Origin';
 
-        const data = { };
-        console.log(this.header);
         results.setHeader(header_, host_);
         axios
             .get(this.uri)
             .then((response) => { 
-                this.parser(response.data, data);
+                const data = this.parser(response.data);
                 results.json(data);
             })
-            .catch(err => console.log);
+            .catch(err => console.error(err));
     }
 }
 
