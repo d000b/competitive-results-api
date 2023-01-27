@@ -83,15 +83,15 @@ function www_game_gg_parser(html)
     
     const cards = get_match_cards(html, labels);
     
-    const stored_data = { };
+    const data = { };
     for (const index in labels)
     {
         const label = labels[index];
-        const store = stored_data[label] = [];
+        const store = data[label] = [];
         cards[index].forEach(element => store.push(element));
     }
 
-    return stored_data;
+    return data;
 }
 
 module.exports.html_game_gg_tournament_parser = www_game_gg_parser;

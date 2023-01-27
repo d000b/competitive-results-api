@@ -18,7 +18,7 @@ function  hltv_result_matches_parser(html)
             const scoreLost = $(".score-lost", this).text();
             
             tables.push({
-                "date": timeline,
+                timeline,
                 event,
                 link,
                 teamWon,
@@ -27,6 +27,7 @@ function  hltv_result_matches_parser(html)
                 scoreLost
             });
         })
+
         return tables;
     }
 
