@@ -1,5 +1,8 @@
 
-function send_data_from_file_utf8(filesystem, filename, results)
+const filesystem = require('fs');
+
+
+function send_data_from_file_utf8(filename, results)
 {
     filesystem.readFile(filename, 'utf8', (file_error, file_data) => {
         if (file_error)
