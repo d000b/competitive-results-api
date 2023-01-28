@@ -1,5 +1,6 @@
 
 const axios = require("axios");
+const json_view = require("../modelview/json");
 
 
 class  ControllerContext
@@ -21,7 +22,7 @@ class  ControllerContext
             .get(this.uri)
             .then((response) => { 
                 const data = this.parser(response.data);
-                results.json(data);
+                json_view.modelview(results, data);
             })
             .catch(err => console.error(err));
     }
