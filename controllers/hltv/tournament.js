@@ -15,10 +15,22 @@ function  get_static_date_string(date_string_wrap)
     );
 }
 
+
 function  hltv_result_matches_parser(html)
 {
     const field = cheerio.load(html)(".allres", html);
     const $ = cheerio.load(field.html());
+
+    var get_date_offset = function(This)
+    {
+        const selector = ".results-all";
+        const attribute = "data-zonedgrouping-headline-format";
+
+        const headline_format = $(selector, This).attr(attribute);
+        const format_date_string = get_static_date_string(headline_format);
+
+        return format_date_string.length + 1;
+    }
 
     var get_hltv_result_tables = function(This, date_offset_wrapper)
     {
@@ -52,10 +64,7 @@ function  hltv_result_matches_parser(html)
 
     const matches = [];
     field.each(function() {
-        const headline_format = $(".results-all", this).attr("data-zonedgrouping-headline-format");
-        const date_offset_string_wrapper = get_static_date_string(headline_format).length + 1;
-        // TODO, FIX, BUG: @d000b
-        // When getting all items with the class '.results-sublist' one (first) item is missing and all tables are shifted by dates.
+        date_offset_string_wrapper = get_date_offset(this);
         $(".results-sublist", this).each(function() {
             const tables = get_hltv_result_tables(this, date_offset_string_wrapper);
 
