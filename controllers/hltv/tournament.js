@@ -2,13 +2,30 @@
 const cheerio = require("cheerio");
 
 
+function  get_formmated_date(date, began_index)
+{
+    return date.slice(began_index);
+}
+
+function  get_static_date_string(date_string_wrap)
+{
+    return date_string_wrap.slice(
+        date_string_wrap.indexOf("'") + 1,
+        date_string_wrap.lastIndexOf("'")
+    );
+}
+
 function  hltv_result_matches_parser(html)
 {
-    const $ = cheerio.load(html);
+    const field = cheerio.load(html)(".allres", html);
+    const $ = cheerio.load(field.html());
 
-    var get_hltv_result_tables = function(This, timeline)
+    var get_hltv_result_tables = function(This, date_offset_wrapper)
     {
-        let tables = [];
+        const tables = [];
+        const headline = $(".standard-headline", This).text();
+        const timeline = get_formmated_date(headline, date_offset_wrapper);
+
         $(".result-con", This).each(function() {
             const link = $(".a-reset", this).attr('href');
             const event = $(".event-name", this).text();
@@ -31,17 +48,20 @@ function  hltv_result_matches_parser(html)
         return tables;
     }
 
-    const hltv = { };
-    $(".allres", html).each(function() {
+    const matches = [];
+    field.each(function() {
+        const headline_format = $(".results-all", this).attr("data-zonedgrouping-headline-format");
+        const date_offset_string_wrapper = get_static_date_string(headline_format).length + 1;
         // TODO, FIX, BUG: @d000b
         // When getting all items with the class '.results-sublist' one (first) item is missing and all tables are shifted by dates.
-        $(".results-sublist", this).each(function() { 
-            const headline = $(".standard-headline", this).text();
-            hltv[headline] = get_hltv_result_tables(this, headline);
+        $(".results-sublist", this).each(function() {
+            const tables = get_hltv_result_tables(this, date_offset_string_wrapper);
+
+            tables.forEach((element) => matches.push(element));
         })
     })
 
-    return hltv;
+    return { matches };
 }
 
 module.exports.html_htlv_tournament_parser = hltv_result_matches_parser;
