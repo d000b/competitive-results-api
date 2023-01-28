@@ -27,6 +27,7 @@ function  hltv_result_matches_parser(html)
         const timeline = get_formmated_date(headline, date_offset_wrapper);
 
         $(".result-con", This).each(function() {
+            const unix = $(this).attr("data-zonedgrouping-entry-unix");
             const link = $(".a-reset", this).attr('href');
             const event = $(".event-name", this).text();
             const teamWon = $(".team-won", this).text();
@@ -36,6 +37,7 @@ function  hltv_result_matches_parser(html)
             
             tables.push({
                 timeline,
+                unix,
                 event,
                 link,
                 teamWon,
