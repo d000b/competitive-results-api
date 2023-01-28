@@ -1,5 +1,4 @@
 
-const filesystem = require('fs');
 const sender = require("./sender");
 
 
@@ -9,11 +8,11 @@ var home_response = function(request, results)
     
     if ("json" == rest_format)
     {
-        sender.send_data_from_file(filesystem, 'root/index.json', results);
+        sender.send_data_from_file('root/index.json', results);
     }
     else if (true || "html" == rest_format)
     {
-        sender.send_data_from_file(filesystem, 'root/index.html', results);
+        sender.send_data_from_file('root/index.html', results);
     }
 }
 
