@@ -31,9 +31,9 @@ node index.js
 ## CS:GO: `/csgo`
 ![](images/csgo.PNG)
 
-## Valorant: `/vava`
+## Valorant: `/valorant`
 ![](images/vava.PNG)
 
-## Overwatch: `/overw`
+## Overwatch: `/overwatch`
 ![](images/overw.PNG)
 
