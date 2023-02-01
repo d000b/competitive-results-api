@@ -10,7 +10,8 @@ RUN groupadd -r group_container_builder && \
 RUN npm install \
      express \
      axios \
-     cheerio
+     cheerio \
+     csv
 
 COPY . .
 

@@ -1,6 +1,6 @@
 
 const axios = require("axios");
-const json_view = require("../modelview/json");
+const viewer = require("../modelview/views");
 
 
 class  ControllerContext
@@ -17,12 +17,13 @@ class  ControllerContext
         const host_ = 'http://localhost:8081';
         const header_ = 'Access-Control-Allow-Origin';
 
+        const view = request.query['view'];
         results.setHeader(header_, host_);
         axios
             .get(this.uri)
             .then((response) => { 
                 const data = this.parser(response.data);
-                json_view.modelview(results, data);
+                viewer.viewer_from_key(view)(results, data);
             })
             .catch(err => console.error(err));
     }
