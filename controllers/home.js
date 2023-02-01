@@ -4,13 +4,13 @@ const sender = require("./sender");
 
 var home_response = function(request, results)
 {
-    rest_format = request.query.fmt;
+    rest_format = request.query['view'];
     
     if ("json" == rest_format)
     {
         sender.send_data_from_file('root/index.json', results);
     }
-    else if (true || "html" == rest_format)
+    else if ("html" == rest_format || true)
     {
         sender.send_data_from_file('root/index.html', results);
     }
