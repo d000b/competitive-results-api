@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KevynSM/competitive-results-api.git"
+    "url": "git+https://github.com/d000b/competitive-results-api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KevynSM/competitive-results-api/issues"
+    "url": "https://github.com/d000b/competitive-results-api/issues"
   },
-  "homepage": "https://github.com/KevynSM/competitive-results-api#readme",
+  "homepage": "https://github.com/d000b/competitive-results-api#readme",
   "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
