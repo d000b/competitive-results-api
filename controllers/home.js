@@ -19,6 +19,8 @@ var home_response = function(request, results)
 
 function get_home_controller_to_router(router)
 {
+    router.get("/", (request, results) => { results.redirect("/home") });
+
     router.get("/home", home_response);
 }
 
