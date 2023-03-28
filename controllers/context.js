@@ -18,11 +18,15 @@ class  ControllerContext
         const header_ = 'Access-Control-Allow-Origin';
 
         const view = request.query['view'];
+        // console.log(this.header);
         results.setHeader(header_, host_);
         axios
             .get(this.uri)
             .then((response) => { 
+                // console.log("Response from '" + response.config.url + "' getted");
+                // console.log(this.parser);
                 const data = this.parser(response.data);
+                // console.log("Data parsed");
                 viewer.viewer_from_key(view)(results, data);
             })
             .catch(err => console.error(err));
