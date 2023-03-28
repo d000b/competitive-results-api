@@ -12,7 +12,7 @@ class  ControllerContext
         this.parser = func_element_parser;
     }
 
-    get_result = function(request, results)
+    get_fetch_and_view_data = function(request, results)
     {
         const host_ = 'http://localhost:8081';
         const header_ = 'Access-Control-Allow-Origin';
